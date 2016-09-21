@@ -1,25 +1,38 @@
 <head>
-  <title>app</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#000">
+
+    <link rel="manifest" href="/manifest.json">
+
+
+    <title>app</title>
+
+    <!-- Material(Android) theme styles -->
+    <link rel="stylesheet" href="/packages/nobutakaoshiro_framework7-ios-material/framework7/dist/css/framework7.material.min.css">
+    <link rel="stylesheet" href="/packages/nobutakaoshiro_framework7-ios-material/framework7/dist/css/framework7.material.colors.min.css">
+
+
+    <script src="/js/NoSleep.js"></script>
+
 </head>
-
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
+{{>layout}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+<template name="layout">
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com" target="_blank">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
-  </ul>
+    {{>leftPanel}}
+    <div class="views">
+        <div class="view view-main">
+            <div class="pages navbar-through toolbar-through">
+
+                <!-- Add all pages, last page will be the one first displayed -->
+                {{>timer}}
+                {{>music}}
+
+            </div>
+        </div>
+    </div>
 </template>

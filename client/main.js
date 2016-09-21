@@ -1,22 +1,40 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+Template.layout.onRendered(function(){
 
-import './main.html';
+  if($.myApp==undefined){
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+      $.myApp = new Framework7({
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+      modalTitle: 'app',
 
-Template.hello.events({
-  'click button'(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  },
-});
+      material: true,
+      materialPageLoadDelay: 200,
+      swipePanel: 'left',
+      dynamicNavbar: true
+
+    });
+  }
+
+  var mainView = $.myApp.addView('.view', {
+    domCache: true
+  });
+
+
+  var $$ = Dom7;
+
+  $$('.panel-left').on('opened', function () {
+    // Do something when panel is opened
+  });
+  $$('.panel-left').on('close', function () {
+    // Do something when panel is closed
+  });
+
+  $.mainView=mainView;
+
+
+  $(".right-menu").on('click',function(){
+    if($(".panel-left").hasClass('active')){
+      $.myApp.closePanel();
+    }
+  })
+
+})
